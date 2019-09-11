@@ -72,10 +72,20 @@ public class MahasiswaDatabaseHelper extends SQLiteOpenHelper {
         }
         return mList;
     }
-//    public int selectDetailMahasiswa(int num,Mahasiswa mahasiswa){
-//        SQLiteDatabase db = getReadableDatabase();
-//        Cursor c = db.rawQuery("Select * from tbl_mahasiswa where nomor ="+num+ , new String[]);
-//    }
+    public Mahasiswa selectDetailMahasiswa(int num){
+        Mahasiswa mahasiswa = new Mahasiswa();
+        SQLiteDatabase db = getReadableDatabase();
+        String columns[] = {KEY_NUM,KEY_NAME,KEY_BIRTH,KEY_SEX,KEY_ALAMAT};
+        Cursor c = db.rawQuery("Select * from tbl_mahasiswa where nomor ='"+num+"'",null);
+        while(c.moveToLast()){
+            mahasiswa.setNomor(c.getInt(0));
+            mahasiswa.setNama(c.getString(1));
+            mahasiswa.setTanggal(c.getString(2));
+            mahasiswa.setJenis_kelamin(c.getString(3));
+            mahasiswa.setAlamat(c.getString(4));
+        }
+    return mahasiswa;
+    }
 
     public void update(Mahasiswa mahasiswa){
         SQLiteDatabase db = getReadableDatabase();
