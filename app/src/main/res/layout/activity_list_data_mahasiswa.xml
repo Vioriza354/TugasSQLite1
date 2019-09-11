@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ListDataMahasiswaActivity">
 
     <RelativeLayout
@@ -15,24 +16,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         >
-        <LinearLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:background="#F0F0F0"
-            android:elevation="20dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            >
-            <TextView
-                android:id="@+id/nama"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:text="o"
-                android:textSize="12pt"
-                android:textColor="#000"
-                android:gravity="left|center"
-                android:paddingLeft="40dp"
-                />
-        </LinearLayout>
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
     </RelativeLayout>
     <RelativeLayout
@@ -45,6 +34,7 @@
         >
         <ImageButton
             android:id="@+id/inputdata"
+
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="#00FFFFFF"
