@@ -43,6 +43,7 @@ public class MahasiswaDatabaseHelper extends SQLiteOpenHelper {
     public void insertData(Mahasiswa mahasiswa){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues v = new ContentValues();
+        v.put(KEY_NUM,mahasiswa.getNomor());
         v.put(KEY_NAME,mahasiswa.getNama());
         v.put(KEY_BIRTH,mahasiswa.getTanggal());
         v.put(KEY_SEX,mahasiswa.getJenis_kelamin());

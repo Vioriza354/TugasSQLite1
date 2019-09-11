@@ -62,6 +62,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
+           android:id="@+id/linearLihatData"
         >
         <ImageView
             android:layout_width="30dp"
@@ -85,6 +86,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="35dp"
             android:orientation="horizontal"
+            android:id="@+id/linearInputData"
             >
             <ImageView
                 android:layout_width="30dp"
@@ -109,6 +111,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="35dp"
             android:orientation="horizontal"
+            android:id="@+id/informasi"
             >
             <ImageView
                 android:layout_width="30dp"
