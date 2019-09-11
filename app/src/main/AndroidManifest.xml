@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ListDataMahasiswaActivity"></activity>
+        <activity android:name=".DetailDataActivity"></activity>
+        <activity android:name=".FormTambahActivity" />
+        <activity android:name=".ListDataMahasiswaActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

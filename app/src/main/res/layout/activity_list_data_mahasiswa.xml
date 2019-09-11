@@ -9,17 +9,55 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#fff"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         >
-        <TextView
-            android:id="@+id/nama"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:text="o"
+            android:background="#F0F0F0"
+            android:elevation="20dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            >
+            <TextView
+                android:id="@+id/nama"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:text="o"
+                android:textSize="12pt"
+                android:textColor="#000"
+                android:gravity="left|center"
+                android:paddingLeft="40dp"
+                />
+        </LinearLayout>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+        <ImageButton
+            android:id="@+id/inputdata"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#00FFFFFF"
+            android:src="@drawable/ic_add_circle_outline_black_24dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INPUT DATA"
+            android:layout_margin="5dp"
             android:textSize="12pt"
+            android:textColor="#FF0000"
+            android:layout_toRightOf="@+id/inputdata"
             />
     </RelativeLayout>
 
