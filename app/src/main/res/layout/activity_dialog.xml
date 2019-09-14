@@ -18,11 +18,13 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#fff"
             android:text="Pilihan"
             android:textSize="14pt"
             android:textColor="#000"
             />
         <Button
+            android:onClick="lihatdata"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#fff"
@@ -32,6 +34,7 @@
             android:paddingLeft="20dp"
             />
         <Button
+            android:onClick="updatedata"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#fff"
@@ -41,6 +44,7 @@
             android:paddingLeft="20dp"
             />
         <Button
+            android:onClick="hapusdata"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#fff"

@@ -2,6 +2,7 @@ package com.example.mymahasiswa;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import androidx.fragment.app.DialogFragment;
 
 
 public class DialogActivity extends DialogFragment {
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,5 +36,16 @@ public class DialogActivity extends DialogFragment {
         builder.setView(view);
         return builder.create();
     }
+    public void lihatdata(View view){
+ 
+    }
+    public void updatedata(View view){
+
+    }
+    public void hapusdata(View view){
+
+    }
+
+
 
 }

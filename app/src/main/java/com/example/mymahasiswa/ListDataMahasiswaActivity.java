@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.Toolbar;
 
@@ -22,7 +25,7 @@ public class ListDataMahasiswaActivity extends AppCompatActivity {
     List<Mahasiswa> mahasiswaList =new ArrayList<>();
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-    RecyclerviewAdapter recyclerviewAdapter;
+    RecyclerviewAdapter recyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,20 @@ public class ListDataMahasiswaActivity extends AppCompatActivity {
         recyclerView.setAdapter(rvAdapter);
         rvAdapter.notifyDataSetChanged();
     }
+    public void rowmahasiswa(View view){
+        OpenDialog();
+    }
+    public void OpenDialog(){
+        DialogActivity Dialog = new DialogActivity();
+        if (Dialog.getDialog() != null && Dialog.getDialog().getWindow() !=null){
+            Dialog.getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            Dialog.getDialog().getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+        }
+        Dialog.show(getSupportFragmentManager(), "DIALOG");
+    }
+
+
+
 
 
 }
