@@ -35,6 +35,7 @@
                 />
             <EditText
                 android:id="@+id/txtNomor"
+                android:hint="Masukan Nomor Anda"
                 android:layout_width="350dp"
                 android:layout_height="50dp" />
         </LinearLayout>
@@ -56,6 +57,7 @@
                 />
             <EditText
                 android:id="@+id/txtNama"
+                android:hint="Masukan Nama Anda"
                 android:layout_width="350dp"
                 android:layout_height="50dp" />
         </LinearLayout>
@@ -76,7 +78,9 @@
                 android:src="@drawable/ic_date_range_black_24dp"
                 />
             <EditText
+                android:focusable="true"
                 android:id="@+id/txtTanggal"
+                android:hint="Masukan Tanggal Anda"
                 android:layout_width="350dp"
                 android:layout_height="50dp" />
         </LinearLayout>
@@ -96,10 +100,24 @@
                 android:layout_height="30dp"
                 android:src="@drawable/ic_person_black_24dp"
                 />
-            <EditText
-                android:id="@+id/txtJenkel"
+            <RadioGroup
+                android:id="@+id/jenkel"
                 android:layout_width="350dp"
-                android:layout_height="50dp" />
+                android:orientation="horizontal"
+               android:layout_height="50dp">
+                <RadioButton
+                android:id="@+id/laki"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_margin="10dp"
+                android:text="LAKI-LAKI" />
+                <RadioButton
+                    android:id="@+id/wanita"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_margin="10dp"
+                    android:text="WANITA" />
+            </RadioGroup>
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
@@ -119,6 +137,7 @@
                 />
             <EditText
                 android:id="@+id/txtAlamat"
+                android:hint="Masukan Alamat Anda"
                 android:layout_width="350dp"
                 android:layout_height="50dp" />
         </LinearLayout>

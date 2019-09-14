@@ -1,25 +1,33 @@
 package com.example.mymahasiswa;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
 
-public class DialogActivity extends DialogFragment {
+public class DialogActivity extends DialogFragment{
+
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.activity_dialog, container, false);
         if(getDialog() != null && getDialog().getWindow() !=null){
             getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -36,16 +44,5 @@ public class DialogActivity extends DialogFragment {
         builder.setView(view);
         return builder.create();
     }
-    public void lihatdata(View view){
- 
-    }
-    public void updatedata(View view){
-
-    }
-    public void hapusdata(View view){
-
-    }
-
-
 
 }

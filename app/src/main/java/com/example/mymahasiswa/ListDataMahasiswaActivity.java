@@ -36,6 +36,7 @@ public class ListDataMahasiswaActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
 
+
         MahasiswaDatabaseHelper db = new MahasiswaDatabaseHelper(getApplicationContext());
         mahasiswaList = db.selectMahasiswaData();
         RecyclerviewAdapter rvAdapter = new RecyclerviewAdapter(getApplicationContext(),mahasiswaList);

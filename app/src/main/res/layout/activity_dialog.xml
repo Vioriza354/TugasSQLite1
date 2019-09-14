@@ -24,7 +24,8 @@
             android:textColor="#000"
             />
         <Button
-            android:onClick="lihatdata"
+            android:id="@+id/lihatdata"
+
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#fff"
@@ -34,7 +35,7 @@
             android:paddingLeft="20dp"
             />
         <Button
-            android:onClick="updatedata"
+            android:id="@+id/updatedata"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#fff"
