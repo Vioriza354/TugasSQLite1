@@ -1,6 +1,5 @@
 package com.example.mymahasiswa;
 
-import android.app.Person;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -20,7 +19,7 @@ public class MahasiswaDatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_NUM = "nomor";
     private static final String KEY_NAME="nama";
     private static final String KEY_BIRTH="tanggal_lahir";
-    private static final String KEY_SEX = "jenis_kelamin";
+    private static final String JENIS_KELAMIN = "jenis_kelamin";
     private static final String KEY_ALAMAT = "alamat";
 
     public MahasiswaDatabaseHelper(Context context){ super(context,DB_NAME,null,DB_VERSION);}
@@ -29,7 +28,7 @@ public class MahasiswaDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         String createTableMahasiswa = "Create table "+TABLE_NAME+"("+KEY_NUM+" INTEGER PRIMARY KEY,"+KEY_NAME+" TEXT,"
-                +KEY_BIRTH+ " TEXT,"+KEY_SEX+" TEXT,"+KEY_ALAMAT+" TEXT)";
+                +KEY_BIRTH+ " TEXT,"+ JENIS_KELAMIN +" TEXT,"+KEY_ALAMAT+" TEXT)";
         db.execSQL(createTableMahasiswa);
 
     }
@@ -46,14 +45,14 @@ public class MahasiswaDatabaseHelper extends SQLiteOpenHelper {
         v.put(KEY_NUM,mahasiswa.getNomor());
         v.put(KEY_NAME,mahasiswa.getNama());
         v.put(KEY_BIRTH,mahasiswa.getTanggal());
-        v.put(KEY_SEX,mahasiswa.getJenis_kelamin());
-        v.put(KEY_SEX,mahasiswa.getAlamat());
+        v.put(JENIS_KELAMIN,mahasiswa.getJenis_kelamin());
+        v.put(JENIS_KELAMIN,mahasiswa.getAlamat());
         db.insert(TABLE_NAME,null,v);
     }
     public List<Mahasiswa> selectMahasiswaData(){
         ArrayList<Mahasiswa> mList = new ArrayList<>();
         SQLiteDatabase db = getReadableDatabase();
-        String columns[] = {KEY_NUM,KEY_NAME,KEY_BIRTH,KEY_SEX,KEY_ALAMAT};
+        String columns[] = {KEY_NUM,KEY_NAME,KEY_BIRTH, JENIS_KELAMIN,KEY_ALAMAT};
         Cursor c = db.query(TABLE_NAME,columns,null,null,null,null,null);
 
         while (c.moveToNext()){
@@ -76,7 +75,7 @@ public class MahasiswaDatabaseHelper extends SQLiteOpenHelper {
     public Mahasiswa selectDetailMahasiswa(int num){
         Mahasiswa mahasiswa = new Mahasiswa();
         SQLiteDatabase db = getReadableDatabase();
-        String columns[] = {KEY_NUM,KEY_NAME,KEY_BIRTH,KEY_SEX,KEY_ALAMAT};
+        String columns[] = {KEY_NUM,KEY_NAME,KEY_BIRTH, JENIS_KELAMIN,KEY_ALAMAT};
         Cursor c = db.rawQuery("Select * from tbl_mahasiswa where nomor ='"+num+"'",null);
         while(c.moveToLast()){
             mahasiswa.setNomor(c.getInt(0));
@@ -94,7 +93,7 @@ public class MahasiswaDatabaseHelper extends SQLiteOpenHelper {
 
         v.put(KEY_NAME,mahasiswa.getNama());
         v.put(KEY_BIRTH,mahasiswa.getTanggal());
-        v.put(KEY_SEX,mahasiswa.getJenis_kelamin());
+        v.put(JENIS_KELAMIN,mahasiswa.getJenis_kelamin());
         v.put(KEY_ALAMAT,mahasiswa.getAlamat());
 
         String where = KEY_NUM+"='"+mahasiswa.getNomor()+"'";

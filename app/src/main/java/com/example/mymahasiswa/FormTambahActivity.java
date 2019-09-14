@@ -43,16 +43,21 @@ public class FormTambahActivity extends AppCompatActivity {
         MahasiswaDatabaseHelper db = new MahasiswaDatabaseHelper(getApplicationContext());
         Mahasiswa mh = new Mahasiswa();
 
-        mh.setNomor(Integer.parseInt(nomor.getText().toString()));
-        mh.setNama(nama.getText().toString());
-        mh.setTanggal(tglLahir.getText().toString());
-        mh.setJenis_kelamin(jenkel.getText().toString());
-        mh.setAlamat(alamat.getText().toString());
+        if (nomor.getText().equals(null)||nomor.getText().equals("")){
+            Toast.makeText(getApplicationContext(),"Masukkan Nomor Mahasiswa dengan Benar!",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            mh.setNomor(Integer.parseInt(nomor.getText().toString()));
+            mh.setNama(nama.getText().toString());
+            mh.setTanggal(tglLahir.getText().toString());
+            mh.setJenis_kelamin(jenkel.getText().toString());
+            mh.setAlamat(alamat.getText().toString());
 
-        db.insertData(mh);
-        Toast.makeText(getApplicationContext(),"Data Berhasil Dimasukkan",Toast.LENGTH_LONG).show();
+            db.insertData(mh);
+            Toast.makeText(getApplicationContext(), "Data Berhasil Dimasukkan", Toast.LENGTH_LONG).show();
 
-        Intent i = new Intent(FormTambahActivity.this,ListDataMahasiswaActivity.class);
-        startActivity(i);
+            Intent i = new Intent(FormTambahActivity.this, ListDataMahasiswaActivity.class);
+            startActivity(i);
+        }
     }
 }

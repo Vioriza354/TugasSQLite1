@@ -17,7 +17,7 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
     OnUserClickListener listener;
     List<Mahasiswa> listMahasiswaInfo;
 
-    public RecyclerviewAdapter(Context context, List<Mahasiswa> listMahasiswaInfo, OnUserClickListener listener) {
+    public RecyclerviewAdapter(Context context, List<Mahasiswa> listMahasiswaInfo) {
         this.context = context;
         this.listMahasiswaInfo = listMahasiswaInfo;
         this.listener = listener;
@@ -31,7 +31,7 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view =
-                LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_list_data_mahasiswa, parent, false);
+                LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_row_mahasiswa, parent, false);
         UserViewHolder userViewHolder = new UserViewHolder(view);
         return userViewHolder;
     }
@@ -39,12 +39,12 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
     public void onBindViewHolder(@NonNull UserViewHolder holder, final int position) {
         final Mahasiswa currentMahasiswa = listMahasiswaInfo.get(position);
         holder.ctxtName.setText(currentMahasiswa.getNama());
-        holder.imgEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onUserClick(currentMahasiswa, "Edit");
-            }
-        });
+//        holder.imgEdit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                listener.onUserClick(currentMahasiswa, "Edit");
+//            }
+//        });
     }
 
     @Override
@@ -54,11 +54,11 @@ public class RecyclerviewAdapter extends RecyclerView.Adapter<RecyclerviewAdapte
 
     public class UserViewHolder extends RecyclerView.ViewHolder {
         TextView ctxtName;
-        ImageView imgEdit;
 
-        public UserViewHolder(@NonNull View itemView) {
+        public UserViewHolder(@NonNull View itemView){
             super(itemView);
             ctxtName = itemView.findViewById(R.id.nama);
         }
+
     }
 }

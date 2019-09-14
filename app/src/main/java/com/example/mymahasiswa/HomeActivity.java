@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(in2);
                 break;
             case R.id.informasi:
-                Toast.makeText(this.getApplicationContext(),"Belum dibikin hehe",Toast.LENGTH_SHORT);
+                Toast.makeText(this.getApplicationContext(),"Belum dibikin hehe",Toast.LENGTH_SHORT).show();
 
         }
     }
