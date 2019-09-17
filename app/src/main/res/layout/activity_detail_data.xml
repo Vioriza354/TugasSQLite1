@@ -40,9 +40,10 @@
                 />
             <EditText
                 android:focusable="true"
-                android:id="@+id/txtNomor"
+                android:id="@+id/txtaNomor"
                 android:layout_width="350dp"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:enabled="false"/>
         </LinearLayout>
         <TextView
             android:layout_width="wrap_content"
@@ -62,7 +63,8 @@
                 />
             <EditText
                 android:focusable="true"
-                android:id="@+id/txtNama"
+                android:id="@+id/txtaNama"
+                android:enabled="false"
                 android:layout_width="350dp"
                 android:layout_height="50dp" />
         </LinearLayout>
@@ -84,7 +86,8 @@
                 />
             <EditText
                 android:focusable="true"
-                android:id="@+id/txtTanggal"
+                android:enabled="false"
+                android:id="@+id/txtaTanggal"
                 android:layout_width="350dp"
                 android:layout_height="50dp" />
         </LinearLayout>
@@ -106,7 +109,8 @@
                 />
             <EditText
                 android:focusable="true"
-                android:id="@+id/txtJenkel"
+                android:id="@+id/txtaJenkel"
+                android:enabled="false"
                 android:layout_width="350dp"
                 android:layout_height="50dp" />
         </LinearLayout>
@@ -128,8 +132,9 @@
                 />
             <EditText
                 android:focusable="true"
-                android:id="@+id/txtAlamat"
+                android:id="@+id/txtaAlamat"
                 android:layout_width="350dp"
+                android:enabled="false"
                 android:layout_height="50dp" />
         </LinearLayout>
     </LinearLayout>

@@ -1,8 +1,7 @@
 package com.example.mymahasiswa.Model;
 
 public class Mahasiswa {
-    String nama,tanggal,jenis_kelamin,alamat;
-    int nomor;
+    String nomor, nama,tanggal,jenis_kelamin,alamat;
 
     public String getNama() {
         return nama;
@@ -36,11 +35,11 @@ public class Mahasiswa {
         this.alamat = alamat;
     }
 
-    public int getNomor() {
+    public String getNomor() {
         return nomor;
     }
 
-    public void setNomor(int nomor) {
+    public void setNomor(String nomor) {
         this.nomor = nomor;
     }
 }

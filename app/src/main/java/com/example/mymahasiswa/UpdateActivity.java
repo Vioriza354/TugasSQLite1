@@ -3,7 +3,6 @@ package com.example.mymahasiswa;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +19,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class FormTambahActivity extends AppCompatActivity {
+public class UpdateActivity extends AppCompatActivity {
+
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
 
@@ -31,7 +31,8 @@ public class FormTambahActivity extends AppCompatActivity {
 
     RadioButton laki,wanita;
     RelativeLayout simpan;
-    Context context;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,20 +45,16 @@ public class FormTambahActivity extends AppCompatActivity {
         laki = (RadioButton)findViewById(R.id.laki);
         wanita = (RadioButton)findViewById(R.id.wanita);
         tanggal = (EditText)findViewById(R.id.txtTanggal);
+        tglLahir = (EditText) findViewById(R.id.txtTanggal);
 
         simpan = (RelativeLayout)findViewById(R.id.simpanData);
-
-
-
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-               insertData();
+            public void onClick(View v) {
+                updateData();
             }
         });
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
-
-        tglLahir = (EditText) findViewById(R.id.txtTanggal);
         tglLahir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,11 +62,28 @@ public class FormTambahActivity extends AppCompatActivity {
             }
         });
 
+        initData();
     }
-    public void insertData(){
+    public void initData(){
+        Intent intent = getIntent();
+
+        nomor.setText(intent.getStringExtra("id"));
+        nomor.setEnabled(false);
+
+        nama.setText(intent.getStringExtra("nama"));
+        tanggal.setText(intent.getStringExtra("tanggal"));
+
+        if (intent.getStringExtra("jenkel").equals("LAKI-LAKI")){
+            laki.isChecked();
+        }
+        else {
+            wanita.isChecked();
+        }
+        alamat.setText(intent.getStringExtra("alamat"));
+    }
+    public void updateData(){
         MahasiswaDatabaseHelper db = new MahasiswaDatabaseHelper(getApplicationContext());
         Mahasiswa mh = new Mahasiswa();
-
 
         if (nomor.getText().toString().equals("")||nama.getText().toString().equals("")){
             Toast.makeText(getApplicationContext(),"Masukkan Nomor Mahasiswa dengan Benar!",Toast.LENGTH_SHORT).show();
@@ -80,11 +94,11 @@ public class FormTambahActivity extends AppCompatActivity {
             mh.setJenis_kelamin(laki.getText().toString());
             mh.setAlamat(alamat.getText().toString());
 
-            db.insertData(mh);
-            Toast.makeText(getApplicationContext(), "Data Berhasil Dimasukkan", Toast.LENGTH_LONG).show();
+            db.update(mh);
+            Toast.makeText(getApplicationContext(), "Data Berhasil Diubah", Toast.LENGTH_LONG).show();
 
 
-            Intent i = new Intent(FormTambahActivity.this, ListDataMahasiswaActivity.class);
+            Intent i = new Intent(UpdateActivity.this, ListDataMahasiswaActivity.class);
             startActivity(i);
         }else if(wanita.isChecked()){
             mh.setNomor(nomor.getText().toString());
@@ -93,30 +107,24 @@ public class FormTambahActivity extends AppCompatActivity {
             mh.setJenis_kelamin(wanita.getText().toString());
             mh.setAlamat(alamat.getText().toString());
 
-            db.insertData(mh);
-            Toast.makeText(getApplicationContext(), "Data Berhasil Dimasukkan", Toast.LENGTH_LONG).show();
+            db.update(mh);
+            Toast.makeText(getApplicationContext(), "Data Berhasil Diubah", Toast.LENGTH_LONG).show();
 
-            Intent i = new Intent(FormTambahActivity.this, ListDataMahasiswaActivity.class);
+            Intent i = new Intent(UpdateActivity.this, ListDataMahasiswaActivity.class);
             startActivity(i);
         }
 
-        tglLahir.setFocusable(true);
+
     }
-
-
-
     public void showDateDialog(){
         Calendar newCalendar = Calendar.getInstance();
         datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            Calendar newDate = Calendar.getInstance();
-            newDate.set(year, monthOfYear, dayOfMonth);
-            tglLahir.setText(dateFormatter.format(newDate.getTime()));
-        }
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                tglLahir.setText(dateFormatter.format(newDate.getTime()));
+            }
         },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
     }
-
-
-
 }

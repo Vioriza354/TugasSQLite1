@@ -27,7 +27,7 @@ public class MahasiswaDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        String createTableMahasiswa = "Create table "+TABLE_NAME+"("+KEY_NUM+" INTEGER PRIMARY KEY,"+KEY_NAME+" TEXT,"
+        String createTableMahasiswa = "Create table "+TABLE_NAME+"("+KEY_NUM+" TEXT PRIMARY KEY,"+KEY_NAME+" TEXT,"
                 +KEY_BIRTH+ " TEXT,"+ JENIS_KELAMIN +" TEXT,"+KEY_ALAMAT+" TEXT)";
         db.execSQL(createTableMahasiswa);
 
@@ -46,7 +46,7 @@ public class MahasiswaDatabaseHelper extends SQLiteOpenHelper {
         v.put(KEY_NAME,mahasiswa.getNama());
         v.put(KEY_BIRTH,mahasiswa.getTanggal());
         v.put(JENIS_KELAMIN,mahasiswa.getJenis_kelamin());
-        v.put(JENIS_KELAMIN,mahasiswa.getAlamat());
+        v.put(KEY_ALAMAT,mahasiswa.getAlamat());
         db.insert(TABLE_NAME,null,v);
     }
     public List<Mahasiswa> selectMahasiswaData(){
@@ -56,7 +56,7 @@ public class MahasiswaDatabaseHelper extends SQLiteOpenHelper {
         Cursor c = db.query(TABLE_NAME,columns,null,null,null,null,null);
 
         while (c.moveToNext()){
-            int num = c.getInt(0);
+            String num = c.getString(0);
             String nama = c.getString(1);
             String tglLahir = c.getString(2);
             String jenkel = c.getString(3);
@@ -72,20 +72,20 @@ public class MahasiswaDatabaseHelper extends SQLiteOpenHelper {
         }
         return mList;
     }
-    public Mahasiswa selectDetailMahasiswa(int num){
-        Mahasiswa mahasiswa = new Mahasiswa();
-        SQLiteDatabase db = getReadableDatabase();
-        String columns[] = {KEY_NUM,KEY_NAME,KEY_BIRTH, JENIS_KELAMIN,KEY_ALAMAT};
-        Cursor c = db.rawQuery("Select * from tbl_mahasiswa where nomor ='"+num+"'",null);
-        while(c.moveToLast()){
-            mahasiswa.setNomor(c.getInt(0));
-            mahasiswa.setNama(c.getString(1));
-            mahasiswa.setTanggal(c.getString(2));
-            mahasiswa.setJenis_kelamin(c.getString(3));
-            mahasiswa.setAlamat(c.getString(4));
-        }
-    return mahasiswa;
-    }
+//    public Mahasiswa selectDetailMahasiswa(int num){
+//        Mahasiswa mahasiswa = new Mahasiswa();
+//        SQLiteDatabase db = getReadableDatabase();
+//        String columns[] = {KEY_NUM,KEY_NAME,KEY_BIRTH, JENIS_KELAMIN,KEY_ALAMAT};
+//        Cursor c = db.rawQuery("Select * from tbl_mahasiswa where nomor ='"+num+"'",null);
+//        while(c.moveToLast()){
+//            mahasiswa.setNomor(c.getInt(0));
+//            mahasiswa.setNama(c.getString(1));
+//            mahasiswa.setTanggal(c.getString(2));
+//            mahasiswa.setJenis_kelamin(c.getString(3));
+//            mahasiswa.setAlamat(c.getString(4));
+//        }
+//    return mahasiswa;
+//    }
 
     public void update(Mahasiswa mahasiswa){
         SQLiteDatabase db = getReadableDatabase();
@@ -99,7 +99,7 @@ public class MahasiswaDatabaseHelper extends SQLiteOpenHelper {
         String where = KEY_NUM+"='"+mahasiswa.getNomor()+"'";
         db.update(TABLE_NAME,v,where,null);
     }
-    public void delete(int num){
+    public void delete(String num){
         SQLiteDatabase db = getReadableDatabase();
         String where = KEY_NUM+"='"+num+"'";
         db.delete(TABLE_NAME,where,null);
